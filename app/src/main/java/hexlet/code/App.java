@@ -21,7 +21,7 @@ public class App implements Callable<String> {
     @Parameters(index = "1", description = "path to second file.")
     private static String filepath2;
 
-    @Option(names = {"-f", "--format"}, description = "output format \"stylish\" or \"plain\" or \"json\" "
+    @Option(names = {"-f", "--format"}, description = "output format \"stylish\" or \"json\" "
             + "[default: stylish]")
     private String format = "stylish";
 
