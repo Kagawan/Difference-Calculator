@@ -1,6 +1,7 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
+
 plugins {
     application
     jacoco
@@ -24,8 +25,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("com.ginsberg:junit5-system-exit:1.1.2")
     implementation ("info.picocli:picocli:4.7.6")
-    //implementation ("com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.4.2")
-    //implementation ("com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-json', version: '2.13.4.2")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.17.1")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.4")
     implementation ("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.0")
 }
 
@@ -35,8 +36,8 @@ tasks.test {
     testLogging {
         exceptionFormat = TestExceptionFormat.FULL
         events = mutableSetOf(TestLogEvent.FAILED, TestLogEvent.PASSED, TestLogEvent.SKIPPED)
-        // showStackTraces = true
-        // showCauses = true
+        showStackTraces = true
+        showCauses = true
         showStandardStreams = true
     }
 }

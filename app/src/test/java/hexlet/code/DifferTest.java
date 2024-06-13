@@ -29,7 +29,7 @@ public class DifferTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    /*@Test
+    @Test
     public void generateTestYaml() throws Exception {
         String filePath1 = "file3Test.yml";
         String filePath2 = "file4Test.yml";
@@ -96,7 +96,7 @@ public class DifferTest {
         filePath2 = pathToFullPath(filePath2);
         String actual = generate(filePath1, filePath2, "plain");
         Assertions.assertEquals(expectedPlain, actual);
-    }*/
+    }
     @Test
     public void generateTestJsonToJson() throws Exception {
         final String first = """
@@ -120,7 +120,7 @@ public class DifferTest {
         }
         throw new IllegalAccessException("файл \"" + path + "\" не существует");
     }
-    /*@Test
+    @Test
     public void generateTestJsonWithNullFile1() throws Exception {
         final String expected3 = """
                 {
@@ -153,5 +153,5 @@ public class DifferTest {
         filePath2 = pathToFullPath(filePath2);
         String actual = generate(filePath1, filePath2);
         Assertions.assertEquals(expected4, actual);
-    }*/
+    }
 }
