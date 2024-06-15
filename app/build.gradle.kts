@@ -48,8 +48,6 @@ testlogger {
     showStandardStreams = true
 }
 
-
 tasks.named<Test>("test") {
     useJUnitPlatform()
 }
-
