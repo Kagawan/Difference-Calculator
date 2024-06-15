@@ -5,9 +5,9 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 plugins {
     application
     jacoco
-    java
+    //java
     checkstyle
-    id ("com.adarshr.test-logger") version "3.2.0"
+    //id ("com.adarshr.test-logger") version "3.2.0"
 }
 
 group = "hexlet.code"
@@ -30,24 +30,30 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.4")
     implementation ("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.0")
 }
-
+tasks.withType<JavaCompile>(){
+    options.compilerArgs.addAll(listOf("-Aproject=${project.group}/${project.name}"))
+}
 tasks.test {
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
     // https://technology.lastminute.com/junit5-kotlin-and-gradle-dsl
     testLogging {
         exceptionFormat = TestExceptionFormat.FULL
         events = mutableSetOf(TestLogEvent.FAILED, TestLogEvent.PASSED, TestLogEvent.SKIPPED)
-        showStackTraces = true
-        showCauses = true
+        //showStackTraces = true
+        //showCauses = true
         showStandardStreams = true
     }
 }
 
-tasks.jacocoTestReport { reports { xml.required.set(true) } }
-testlogger {
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports { xml.required.set(true) }
+}
+/*testlogger {
     showStandardStreams = true
 }
 
 tasks.named<Test>("test") {
     useJUnitPlatform()
-}
+}*/
