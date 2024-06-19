@@ -1,47 +1,72 @@
 package hexlet.code;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
+import static hexlet.code.Differ.generate;
+import static hexlet.code.FixtureReader.readFromFile;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-public final class DifferTest {
-
-    private static String resultJson;
-    private static String resultPlain;
-    private static String resultStylish;
-
-    private static Path getFixturePath(String fileName) {
-        return Paths.get("src", "test", "resources", fileName)
-                .toAbsolutePath().normalize();
+public class ApplicationTest {
+    @Test
+    public void testStylishFormatterJson() throws Exception {
+        String expected = readFromFile("src/test/resources/stylish.txt");
+        String actual = generate("src/test/resources/file1.json",
+                "src/test/resources/file2.json", "stylish");
+        assertEquals(expected, actual);
     }
 
-    private static String readFixture(String fileName) throws Exception {
-        Path filePath = getFixturePath(fileName);
-        return Files.readString(filePath).trim();
+    @Test
+    public void testPlainFormatterJson() throws Exception {
+        String expected = readFromFile("src/test/resources/plain.txt");
+        String actual = generate("src/test/resources/file1.json",
+                "src/test/resources/file2.json", "plain");
+        assertEquals(expected, actual);
     }
 
-    @BeforeAll
-    public static void beforeAll() throws Exception {
-        resultJson = readFixture("result_json.txt");
-        resultPlain = readFixture("result_plain.txt");
-        resultStylish = readFixture("result_stylish.txt");
+    @Test
+    public void testJsonFormatterJson() throws Exception {
+        String expected = readFromFile("src/test/resources/json.txt");
+        String actual = generate("src/test/resources/file1.json",
+                "src/test/resources/file2.json", "json");
+        assertEquals(expected, actual);
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"json", "yml"})
-    public void generateTest(String format) throws Exception {
-        String filePath1 = getFixturePath("file1." + format).toString();
-        String filePath2 = getFixturePath("file2." + format).toString();
-
-        assertEquals(Differ.generate(filePath1, filePath2), resultStylish);
-        assertEquals(Differ.generate(filePath1, filePath2, "plain"), resultPlain);
-        assertEquals(Differ.generate(filePath1, filePath2, "json"), resultJson);
+    @Test
+    public void testStylishFormatterYaml() throws Exception {
+        String expected = readFromFile("src/test/resources/stylish.txt");
+        String actual = generate("src/test/resources/file1.yaml",
+                "src/test/resources/file2.yaml", "stylish");
+        assertEquals(expected, actual);
     }
 
+    @Test
+    public void testPlainFormatterYaml() throws Exception {
+        String expected = readFromFile("src/test/resources/plain.txt");
+        String actual = generate("src/test/resources/file1.yaml",
+                "src/test/resources/file2.yaml", "plain");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testJsonFormatterYaml() throws Exception {
+        String expected = readFromFile("src/test/resources/json.txt");
+        String actual = generate("src/test/resources/file1.yaml",
+                "src/test/resources/file2.yaml", "json");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGenerateJson() throws Exception {
+        String expected = readFromFile("src/test/resources/stylish.txt");
+        String actual = generate("src/test/resources/file1.json",
+                "src/test/resources/file2.json");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGenerateYaml() throws Exception {
+        String expected = readFromFile("src/test/resources/stylish.txt");
+        String actual = generate("src/test/resources/file1.yaml",
+                "src/test/resources/file2.yaml");
+        assertEquals(expected, actual);
+    }
 }
