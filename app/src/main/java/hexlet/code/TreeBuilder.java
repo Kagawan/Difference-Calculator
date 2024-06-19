@@ -7,6 +7,7 @@ import java.util.TreeSet;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Objects;
+
 public class TreeBuilder {
     public static List<Map<String, Object>> outputStructure(Map<String, Object> map1, Map<String, Object> map2) {
         List<Map<String, Object>> result = new ArrayList<>();

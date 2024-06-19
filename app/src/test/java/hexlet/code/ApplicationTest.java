@@ -2,7 +2,7 @@ package hexlet.code;
 
 import org.junit.jupiter.api.Test;
 
-import static hexlet.code.Diffef.generate;
+import static hexlet.code.Differ.generate;
 import static hexlet.code.FixtureReader.readFromFile;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ApplicationTest {
