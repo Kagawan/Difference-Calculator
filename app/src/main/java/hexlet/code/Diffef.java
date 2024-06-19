@@ -10,7 +10,7 @@ import static hexlet.code.Formatter.formatter;
 import static hexlet.code.Parser.parser;
 import static hexlet.code.TreeBuilder.outputStructure;
 
-public class Diff {
+public class Diffef {
     public static String readContent(String filePath) throws Exception {
         Path path = Paths.get(filePath).toAbsolutePath().normalize();
 
