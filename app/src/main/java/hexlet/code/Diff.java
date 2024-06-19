@@ -20,7 +20,6 @@ public class Diff {
 
         return Files.readString(path);
     }
-
     public static String detectFormat(String filePath) {
         var array = filePath.split("\\.");
         String format = null;
@@ -45,7 +44,6 @@ public class Diff {
 
         return formatter(outputStructure(map1, map2), format);
     }
-
     public static String generate(String filePath1, String filePath2) throws Exception {
         return generate(filePath1, filePath2, "stylish");
     }

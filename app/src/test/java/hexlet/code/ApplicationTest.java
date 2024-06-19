@@ -13,7 +13,6 @@ public class ApplicationTest {
                 "src/test/resources/file2.json", "stylish");
         assertEquals(expected, actual);
     }
-
     @Test
     public void testPlainFormatterJson() throws Exception {
         String expected = readFromFile("src/test/resources/plain.txt");

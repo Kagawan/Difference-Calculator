@@ -8,7 +8,6 @@ import picocli.CommandLine.Option;
 import java.util.concurrent.Callable;
 
 import static hexlet.code.Diff.generate;
-
 @Command(name = "gendiff",
         version = "1.0",
         mixinStandardHelpOptions = true,
