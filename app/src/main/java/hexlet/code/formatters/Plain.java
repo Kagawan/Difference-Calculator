@@ -6,13 +6,11 @@ import java.util.Map;
 public class Plain {
     public static String plain(List<Map<String, Object>> list) {
         StringBuilder result = new StringBuilder();
-
         for (var map : list) {
             String key = (String) map.get("key");
             String changes = (String) map.get("changes");
             var oldValue =  formatMapValue(map.get("oldValue"));
             var newValue = formatMapValue(map.get("newValue"));
-
             if (map.containsKey("changes")) {
                 result.append("Property '")
                         .append(key)
