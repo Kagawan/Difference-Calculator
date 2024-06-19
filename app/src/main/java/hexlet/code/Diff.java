@@ -8,9 +8,9 @@ import java.util.TreeMap;
 
 import static hexlet.code.Formatter.formatter;
 import static hexlet.code.Parser.parser;
-import static hexlet.code.TreeBuilder.treeBuilder;
+import static hexlet.code.TreeBuilder.outputStructure;
 
-public class Differ {
+public class Diff {
     public static String readContent(String filePath) throws Exception {
         Path path = Paths.get(filePath).toAbsolutePath().normalize();
 
@@ -43,7 +43,7 @@ public class Differ {
         Map<String, Object> map1 = new TreeMap<>(parser(data1, format1));
         Map<String, Object> map2 = new TreeMap<>(parser(data2, format2));
 
-        return formatter(treeBuilder(map1, map2), format);
+        return formatter(outputStructure(map1, map2), format);
     }
 
     public static String generate(String filePath1, String filePath2) throws Exception {
