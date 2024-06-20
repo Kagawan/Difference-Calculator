@@ -13,7 +13,6 @@ import static hexlet.code.TreeBuilder.treeBuilder;
 public class Differ {
     public static String readContent(String filePath) throws Exception {
         Path path = Paths.get(filePath).toAbsolutePath().normalize();
-
         if (Files.notExists(path)) {
             throw new Exception("File '" + path + " does not exist");
         }
