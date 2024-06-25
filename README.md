@@ -5,8 +5,7 @@
 Возможности приложения:
 * Поддерживает форматы ввода: JSON и YAML.
 * Генерация отчетов в plain text, stylish и JSON.
-**Опции**
--f, --format: Опция для выбора формата файлов (JSON или YAML).
+* -f, --format: Опция для выбора формата файлов (JSON или YAML).
 # Бейджики
 
 [![Actions Status](https://github.com/Kagawan/java-project-71/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Kagawan/java-project-71/actions)
